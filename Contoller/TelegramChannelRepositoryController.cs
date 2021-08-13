@@ -2,6 +2,7 @@
 using EzPaymentBot.Dao.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EzPaymentBot.Contoller
 {
@@ -52,10 +53,10 @@ namespace EzPaymentBot.Contoller
             await db.SaveChangesAsync();
         }
 
-        public async TelegramChannel FindChannels(string name)
+        public TelegramChannel FindChannels(string name)
         {
-            //TelegramChannel channel = db.Channels.Include(u => u.Name == name); //.FirstOrDefaultAsync(ch => ch.Name == name);
-            TelegramChannel channel = DataContext.
+            TelegramChannel channel = db.Channels.Where(c => c.Name.Equals(name)).FirstOrDefault();
+            return channel;
         }
     }
 }
