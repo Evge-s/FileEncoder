@@ -10,7 +10,6 @@ namespace EzPaymentBot
     {
         private static TelegramBotClient client;
         private static List<Command.Command> commands;
-
         public TelegramBot()
         {
             client = new TelegramBotClient(Config.Token);
@@ -18,6 +17,7 @@ namespace EzPaymentBot
             commands = new List<Command.Command>();
             commands.Add(new GetChannels());
             commands.Add(new AddChannel());
+            commands.Add(new Default());
 
             client.StartReceiving();
             client.OnMessage += OnMessageHandler;
@@ -31,13 +31,18 @@ namespace EzPaymentBot
             var msg = e.Message;
             if (msg.Text != null)
             {
-                Console.WriteLine($"Received message: {msg.From.Id} + {msg.From.Username}: \n{msg.Text}");                
-
+                Console.WriteLine($"Received message: {msg.From.Id} + {msg.From.Username}: \n{msg.Text}");
+                bool flag = false;
                 foreach(var command in commands)
                 {
                     if (command.Contains(msg.Text))
+                    {
+                        flag = true;
                         command.Execute(msg, client);
+                    }
                 }
+                if (!flag)
+                    commands.Find(c => c.Name == "Default").Execute(msg, client);
             }
 
         }
