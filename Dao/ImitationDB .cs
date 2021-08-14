@@ -10,8 +10,8 @@ namespace EzPaymentBot.Dao
         {
             dbList = new List<Model>
             {
-                new Model() { Name = "Азиз Алиев", Links = "https://t.me/joinchat/Ld62ffh-z3I0ZTMy" },
-                new Model() { Name = "Chaos Trade", Links = "https://t.me/joinchat/yJgCXjZtg-Q0ZGRi" },
+                new Model() { Name = "Азиз Алиев", Links = "https://t.me/joinchat/" },
+                new Model() { Name = "Chaos Trade", Links = "https://t.me/joinchat/" },
             };
         }
 
