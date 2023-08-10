@@ -55,13 +55,15 @@ namespace FileEncoderDecoder
 
                 try
                 {
-                    if (choice == 1) // Encode
+                    if (choice == 1)
                     {
+                        consoleUI.WaitingScreen();
                         result = encryptionService.Encrypt(fileContent, encryptionKey);
                         fileService.WriteAllBytes(filePath, result, true);
                     }
-                    else if (choice == 2) // Decode
+                    else if (choice == 2) 
                     {
+                        consoleUI.WaitingScreen();
                         result = encryptionService.Decrypt(fileContent, encryptionKey);
                         fileService.WriteAllBytes(filePath, result, false);
                     }

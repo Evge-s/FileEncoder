@@ -52,7 +52,6 @@ namespace FileEncoderDecoder.UI
             Console.WriteLine($"An error occurred: {message}");
         }
 
-
         public void ShowInvalidPassErrorMessage(string message)
         {
             Console.WriteLine($"Invalid password code or:");
@@ -71,20 +70,9 @@ namespace FileEncoderDecoder.UI
             Console.Clear();
         }
 
-        public void ShowLoadingIndicator(string message)
+        public void WaitingScreen()
         {
-            char[] spinner = new char[] { '|', '/', '-', '\\' };
-            int spinnerIndex = 0;
-
-            Console.Write(message);
-
-            while (true)
-            {
-                Console.Write(spinner[spinnerIndex]);
-                spinnerIndex = (spinnerIndex + 1) % spinner.Length;
-                Thread.Sleep(100);
-                Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
-            }
+            Console.WriteLine("Wait...");
         }
     }
 }
