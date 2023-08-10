@@ -2,7 +2,7 @@
 {
     public class FileService
     {
-        public byte[] ReadAllBytes(string filePath)
+        public string CleanUpFilePath(string filePath)
         {
             filePath = filePath.Trim('"');
 
@@ -11,6 +11,11 @@
                 throw new FileNotFoundException($"File '{filePath}' was not found.");
             }
 
+            return filePath;
+        }
+
+        public byte[] ReadAllBytes(string filePath)
+        {
             return File.ReadAllBytes(filePath);
         }
 

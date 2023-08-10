@@ -39,6 +39,7 @@ namespace FileEncoderDecoder
                 }
 
                 string filePath = consoleUI.PromptForFilePath();
+                filePath = fileService.CleanUpFilePath(filePath);
 
                 byte[] fileContent;
                 try
@@ -75,7 +76,7 @@ namespace FileEncoderDecoder
                 }
                 catch (Exception ex)
                 {                    
-                    consoleUI.ShowErrorMessage(ex.Message);
+                    consoleUI.ShowInvalidPassErrorMessage(ex.Message);
                     continue;
                 }
 
